@@ -10,7 +10,6 @@ public class Jokalaria {
 	private int puntuak=0;
 	private List<Karta> kartak = new ArrayList<Karta>();
 	
-	
 	public int getPuntuak() {
 		return puntuak;
 	}
