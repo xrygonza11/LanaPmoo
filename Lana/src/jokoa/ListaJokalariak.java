@@ -1,13 +1,32 @@
-
 package jokoa;
 
-public class Jokoa {
-
-	private int puntuak1=0;
-	private int puntuak2=0;
-
-	public static int Gehienezko_puntuazioa = 15;
-
+public class ListaJokalariak {
+	//atributuak
+	private Jokalaria[] lista;
+	private static ListaJokalariak nireListaJokalariak=null;
+	//gainontzeko metodoak
+	
+	public static ListaJokalariak getNireListaJokalariak() {
+		if (nireListaJokalariak==null) {
+			nireListaJokalariak=new ListaJokalariak();
+		}
+		return nireListaJokalariak;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public boolean bukaera() {
 		return puntuak1 >= Gehienezko_puntuazioa || puntuak2>= Gehienezko_puntuazioa;
 	}

@@ -10,9 +10,9 @@ public class Ronda {
 	private ArrayList<Karta> aukeratutakoak = new ArrayList<Karta>();
 	private ArrayList<Karta> medio = new ArrayList<Karta>();
 
-	private Multzoa baraja = new Multzoa();
+	private Baraja baraja = new Baraja();
 
-	private Jokoa jokoa = new Jokoa();
+	private ListaJokalariak jokoa = new ListaJokalariak();
 
 	private Jokalaria j1 = new Jokalaria("Jugador1");
 	private Jokalaria j2 = new Jokalaria("Jugador2");
@@ -192,7 +192,7 @@ public class Ronda {
 	public void rondaHasieratu() {
 		j1.getKartak().clear();
 		j2.getKartak().clear();
-		baraja = new Multzoa();
+		baraja = new Baraja();
 	}
 
 	public void kartakGehitu(Jokalaria j) {
@@ -200,19 +200,19 @@ public class Ronda {
 		j.geiKartak(r);
 	}
 
-	public Multzoa getMultzoa() {
+	public Baraja getMultzoa() {
 		return baraja;
 	}
 
-	public void setMultzoa(Multzoa m) {
+	public void setMultzoa(Baraja m) {
 		this.baraja = m;
 	}
 
-	public Jokoa getJokoa() {
+	public ListaJokalariak getJokoa() {
 		return jokoa;
 	}
 
-	public void setJokoa(Jokoa jokoa) {
+	public void setJokoa(ListaJokalariak jokoa) {
 		this.jokoa = jokoa;
 	}
 }

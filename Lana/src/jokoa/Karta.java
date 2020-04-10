@@ -28,7 +28,10 @@ public class Karta {
 	public void setAukeratua(boolean a) {
 		this.aukeratua = a;
 	}
-
-
+	public void imprimatuKarta(){
+		System.out.println("Paloa: "+this.palo);
+		System.out.println("Zenbakia: "+this.zenb);
+	
+	}
 }
 
