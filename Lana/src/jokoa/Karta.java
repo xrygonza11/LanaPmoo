@@ -31,7 +31,7 @@ public class Karta {
 	public void imprimatuKarta(){
 		System.out.println("Paloa: "+this.palo);
 		System.out.println("Zenbakia: "+this.zenb);
-	
+		System.out.println("         ");
 	}
 }
 

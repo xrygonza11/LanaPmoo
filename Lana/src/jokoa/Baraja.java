@@ -1,8 +1,8 @@
-
 package jokoa;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Baraja {
 	//atributuak
@@ -33,11 +33,14 @@ public class Baraja {
 		multzoaSortu();
 	}
 	
-	public void banaketa(Jokalaria[] mano) {
-		
-		mano.setk1(getKarta());
-		mano.setk2(getKarta());
-		mano.setk3(getKarta());
+	public void banaketa(Jokalaria pJokalari) {
+		Karta k=null;
+		Random r=new Random();
+		while(lista.getKartaKop()>1){
+			int random=r.nextInt(lista.getKartaKop());
+			k=lista.getKarta(random);
+			pJokalari.getEskukoKartak().gehituKarta(k);
+		}
 	}
 	
 	

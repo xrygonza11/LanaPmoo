@@ -38,4 +38,7 @@ public class ListaKartak {
 			k.imprimatuKarta();
 		}
 	}
+	public int getKartaKop(){
+		return this.kartaKop;
+	}
 }
