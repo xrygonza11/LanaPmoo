@@ -1,9 +1,13 @@
 package jokoa;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 public class ListaJokalariak {
 	//atributuak
-	private Jokalaria[] lista;
+	private ArrayList<Jokalaria> lista;
 	private static ListaJokalariak nireListaJokalariak=null;
+	private int Gehienezko_puntuazioa=21;
+	private Baraja b;
 	//gainontzeko metodoak
 	
 	public static ListaJokalariak getNireListaJokalariak() {
@@ -12,45 +16,37 @@ public class ListaJokalariak {
 		}
 		return nireListaJokalariak;
 	}
+	private Iterator<Jokalaria> getIteradorea(){
+		return this.lista.iterator();
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void partidaJolastu(){
+	while(!bukaera()){
+		rondaJolastu();
+	}
+	}
 	
 	
 	
 	
 	public boolean bukaera() {
-		return puntuak1 >= Gehienezko_puntuazioa || puntuak2>= Gehienezko_puntuazioa;
+		return  getJokalari1Puntuak()>= Gehienezko_puntuazioa || getJokalari2Puntuak()>= Gehienezko_puntuazioa;
 	}
-
-	public int getJokalari1Puntuak() {
-		return puntuak1;
+	public void rondaJolastu(){
+		
 	}
-	public void setJokalari1Puntuak(int puntu1) {
-		this.puntuak1 = puntu1+this.puntuak1;
+	public void rondaBukatu(){
+		Jokalaria j=null;
+		Iterator itr=this.getIteradorea();
+		while(itr.hasNext()){
+			j=itr.next();
+			j.puntuakGehitu(j.puntuenBanaketa());
+		}
 	}
-	public int getJokalari2Puntuak() {
-		return puntuak2;
+	public void kartakBanatu(){
+		int kont=3;
+		
 	}
-	public void setJokalari2Puntuak(int puntu2) {
-		this.puntuak2 = puntu2+this.puntuak2;
-	}
-	public void partidaBatJolastu() {
-		puntuak1=0;
-		puntuak2=0;
-	}
-	
-	
-
-
 
 
 

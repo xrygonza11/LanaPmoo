@@ -33,14 +33,14 @@ public class Baraja {
 		multzoaSortu();
 	}
 	
-	public void banaketa(Jokalaria pJokalari) {
+	public Karta banaketa() {
 		Karta k=null;
 		Random r=new Random();
-		while(lista.getKartaKop()>1){
+		if(lista.getKartaKop()>1){
 			int random=r.nextInt(lista.getKartaKop());
 			k=lista.getKarta(random);
-			pJokalari.getEskukoKartak().gehituKarta(k);
 		}
+		return k;
 	}
 	
 	
