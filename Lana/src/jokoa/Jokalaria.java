@@ -9,11 +9,13 @@ public abstract class Jokalaria {
 	private int puntuak;
 	private ListaKartak eskukoKartak;
 	private ListaKartak lortutakoKartak;
+	private ListaKartak jokaldikoKartak;
 	//eraikitzaileak
 	public Jokalaria (){
 		this.puntuak=0;
 		this.eskukoKartak=new ListaKartak();
 		this.lortutakoKartak=new ListaKartak();
+		this.jokaldikoKartak=new ListaKartak();
 	}
 	
 	//gainontzeko metodoak
@@ -22,6 +24,9 @@ public abstract class Jokalaria {
 	}
 	protected ListaKartak getLortutakoKartak(){
 		return this.lortutakoKartak;
+	}
+	protected ListaKartak getJokaldikoKartak() {
+		return this.jokaldikoKartak;
 	}
 	protected int getPuntuak(){
 		return this.puntuak;
@@ -77,13 +82,6 @@ public abstract class Jokalaria {
 	public void berriabiarazi() {
 		puntuak=0;
 		lortutakoKartak.erreseteatu();
-	}
-
-	public void jokatuKarta(Teklatua tk){
-		int t;
-		t=tk.irakurriOsoa();
-		lortutakoKartak.gehituKarta(eskukoKartak.getKarta(t));
-		eskukoKartak.kenduKarta(t);
 	}
 
 }

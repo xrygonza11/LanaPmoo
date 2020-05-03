@@ -17,10 +17,10 @@ public class MahaikoKartak {
 			}
 			return nireMahaikoKartak;
 		}
-		public void banatuLau(Baraja b){
+		public void banatuLau(){
 			int kont=4;
 			while (kont>0){
-				this.lista.gehituKarta(b.banaketa());
+				this.lista.gehituKarta(Baraja.getNireBaraja().banaketa());
 				kont=kont-1;
 				this.kartaKop=this.kartaKop+1;
 			}
@@ -42,5 +42,28 @@ public class MahaikoKartak {
 		public void imprimatuKartak(){
 			System.out.println("Mahaiko Kartak:");
 			this.lista.imprimatuKartak();
+		}
+		public void kenduKartaPos(int pPos) {
+			this.lista.kenduKarta(pPos);
+			this.kartaKop=this.kartaKop-1;
+		}
+		public int banatzeanEskobaKop() {
+			int eskobakop=0;
+			Karta k=null;
+			int  kartenBalioa=0;
+			int i=this.lista.getKartaKop();
+			while(i>0) {
+				k=this.lista.getKarta(i);
+				kartenBalioa=kartenBalioa+k.getZenb();
+				i--;
+			}
+			if(kartenBalioa==15) {
+				eskobakop=1;
+			}else{
+				if(kartenBalioa==30){
+					eskobakop=2;
+			}	
+			}
+			return eskobakop;
 		}
 }
