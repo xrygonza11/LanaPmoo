@@ -5,9 +5,9 @@ public class JokalariArrunta extends Jokalaria{
 	//eraikitzaileak
 	private String izena;
 	private int saiakerak=3;
-	public JokalariArrunta(Teklatua tk){
-		String s=tk.irakurriString();
-		this.izena=s;
+	public JokalariArrunta(String pS){
+		super();
+		this.izena=pS;	
 	}
 	//gainontzeko metodoak
 	public void imprimatuEskua(){
@@ -17,85 +17,89 @@ public class JokalariArrunta extends Jokalaria{
 	public int getSaiakerak() {
 		return this.saiakerak;
 	}
-	public void jokaldiaegin(Teklatua tk,int pSaiakerak)throws SaiakeraMaximoakGainditutaSalbuespena{
+	private void saiakerakBerrabiarazi() {
+		this.saiakerak=3;
+	}
+	public void jokaldiaEgin(){
 		Karta k=null;
 		int jokaldiPuntuak=0;
 		try {
-			if(saiakerak<=0) {
+			if(this.saiakerak<=0) {
 				throw new SaiakeraMaximoakGainditutaSalbuespena();
 			}
 		}catch(SaiakeraMaximoakGainditutaSalbuespena e) {
 			e.inprimatuMezua();
-			turnoaBukatu(tk);
+			turnoaBukatu();
 		}
-		while(pSaiakerak>0) {
-		System.out.println(izena+" "+pSaiakerak+" geratzen zaizkizu.");
+		while(this.saiakerak>0) {
+		System.out.println(izena+" "+this.saiakerak+" geratzen zaizkizu.");
 		MahaikoKartak.getNireMahaikoKartak().imprimatuKartak();
 		System.out.println(" ");
 		this.imprimatuEskua();
 		System.out.println( izena+ "Egin Zure Jokaldia");
 		System.out.println("Aukeratu Eskuko Karta");
-		k=this.aukeratuEskukoKarta(tk);
+		k=this.aukeratuEskukoKarta();
 		jokaldiPuntuak=jokaldiPuntuak+k.getZenb();
-		aukeratuMahaikoKartak(tk,pSaiakerak,jokaldiPuntuak);
+		aukeratuMahaikoKartak(jokaldiPuntuak);
 		}
+		this.saiakerakBerrabiarazi();
 	}
-	public Karta aukeratuEskukoKarta(Teklatua tk){
+	public Karta aukeratuEskukoKarta(){
 		Karta k=null;
 		int aukera=0;
 		Boolean denaOndo=false;
-		tk.irakurriEnter();
-		String sarrera=tk.irakurriString();
+		Teklatua.getNireTeklatua().irakurriEnter();
+		String sarrera=Teklatua.getNireTeklatua().irakurriString();
 		try {
 			aukera=Integer.parseInt(sarrera);
 			denaOndo=true;
 		}catch(NumberFormatException e) {
 			System.out.println("Sarrera zenbaki bat izan behar da.");
-			this.aukeratuEskukoKarta(tk);
+			this.aukeratuEskukoKarta();
 		}
 		if(denaOndo) {
 			k=getEskukoKartak().getKarta(aukera);
 			if(k==null) {
 				System.out.println("Aukeratutako posizioan ez dago kartarik, aukeratu beste bat.");
-				this.aukeratuEskukoKarta(tk);
+				this.aukeratuEskukoKarta();
 			}
 		}
 		return k;
 	}
-	public void aukeratuMahaikoKartak(Teklatua tk, int pSaiakerak,int pJokaldiPuntuak) throws SaiakeraMaximoakGainditutaSalbuespena{
+	public void aukeratuMahaikoKartak(int pJokaldiPuntuak){
 		Karta k2=null;
 		int aukera=0;
 		Boolean denaOndo=false;
 		char baieztapena=0;
-		tk.irakurriEnter();
-		String sarrera=tk.irakurriString();
+		Teklatua.getNireTeklatua().irakurriEnter();
+		String sarrera=Teklatua.getNireTeklatua().irakurriString();
 		do {
 		try {
 			aukera=Integer.parseInt(sarrera);
 			denaOndo=true;
 		}catch(NumberFormatException e) {
 			System.out.println("Sarrera zenbaki bat izan behar da.");
-			this.aukeratuMahaikoKartak(tk, pSaiakerak,pJokaldiPuntuak);
+			this.aukeratuMahaikoKartak(pJokaldiPuntuak);
 		}
 		if(denaOndo) {
 			k2= MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(aukera);
 			if(k2==null) {
 				System.out.println("Aukeratutako posizioan ez dago kartarik, aukeratu beste bat.");
-				this.aukeratuMahaikoKartak(tk,pSaiakerak,pJokaldiPuntuak);
+				this.aukeratuMahaikoKartak(pJokaldiPuntuak);
 			}
 			this.getJokaldikoKartak().gehituKarta(k2);
 			MahaikoKartak.getNireMahaikoKartak().kenduKartaPos(aukera);
 			pJokaldiPuntuak=pJokaldiPuntuak+k2.getZenb();
 			System.out.println("Karta gehiago aukeratu nahi dituzu? Bai(b)/Ez(e)");
-			baieztapena=tk.irakurriChar();
+			baieztapena=Teklatua.getNireTeklatua().irakurriChar();
 			if(baieztapena=='b') {
-				this.aukeratuMahaikoKartak(tk, pSaiakerak,pJokaldiPuntuak);
+				this.aukeratuMahaikoKartak(pJokaldiPuntuak);
 			}
 		}
 		}while(baieztapena!='e');
 		if(pJokaldiPuntuak!=15) {
 			System.out.println("Jokaldiak ez du balio");
-			pSaiakerak--;
+			this.saiakerak--;
 			while(this.getJokaldikoKartak().getKartaKop()>0){
 				int i=this.getJokaldikoKartak().getKartaKop();
 				k2=this.getJokaldikoKartak().getKarta(i);
@@ -103,7 +107,7 @@ public class JokalariArrunta extends Jokalaria{
 				this.getJokaldikoKartak().kenduKarta(i);
 				i--;
 			}
-			this.jokaldiaegin(tk,pSaiakerak);
+			this.jokaldiaEgin();
 		}else {
 			while(this.getJokaldikoKartak().getKartaKop()>0){
 				int i=this.getJokaldikoKartak().getKartaKop();
@@ -115,26 +119,26 @@ public class JokalariArrunta extends Jokalaria{
 		}
 		
 	}
-	public void turnoaBukatu(Teklatua tk){
+	public void turnoaBukatu(){
 		System.out.println("Txanda bukatuko da, aukeratu karta bat mahaira botatzeko");
 		this.imprimatuEskua();
 		Karta k=null;
 		int aukera=0;
 		Boolean denaOndo=false;
-		tk.irakurriEnter();
-		String sarrera=tk.irakurriString();
+		Teklatua.getNireTeklatua().irakurriEnter();
+		String sarrera=Teklatua.getNireTeklatua().irakurriString();
 		try {
 			aukera=Integer.parseInt(sarrera);
 			denaOndo=true;
 		}catch(NumberFormatException e) {
 			System.out.println("Sarrera zenbaki bat izan behar da.");
-			this.turnoaBukatu(tk);
+			this.turnoaBukatu();
 		}
 		if(denaOndo) {
 			k=getEskukoKartak().getKarta(aukera);
 			if(k==null) {
 				System.out.println("Aukeratutako posizioan ez dago kartarik, aukeratu beste bat.");
-				this.turnoaBukatu(tk);
+				this.turnoaBukatu();
 			}
 		}
 		MahaikoKartak.getNireMahaikoKartak().gehituKarta(k);

@@ -1,18 +1,17 @@
 package jokoa;
-import java.util.Iterator;
 
 public class JokalariCPU extends Jokalaria {
 	//atributuak
 	private String izena;
-	private Konbinazioak konbi;
 	//eraikitzaileak
 	public JokalariCPU(){
+		super();
 		this.izena="CPU";
 	}
 	//gainontzeko metodoak
 	
-	public void jokaldia(){
-		konbi.konbinazioOnena();
+	public void jokaldiaEgin(){
+		this.getKonbinazioak().konbinazioOnena();
 	}
 	public void turnoaBukatu(){
 		MahaikoKartak.getNireMahaikoKartak().gehituKarta(this.baloreGutxiengoKarta());

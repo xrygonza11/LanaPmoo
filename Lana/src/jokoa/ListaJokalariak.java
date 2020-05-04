@@ -7,41 +7,89 @@ public class ListaJokalariak {
 	private Jokalaria[]lista;
 	private static ListaJokalariak nireListaJokalariak=null;
 	private int Gehienezko_puntuazioa=21;
+	
 	//eraikitzailea
 	private ListaJokalariak() {
 		this.lista= new Jokalaria[2];
 	}
 	//gainontzeko metodoak
 	
-	public static ListaJokalariak getNireListaJokalariak() {
-		if (nireListaJokalariak==null) {
-			nireListaJokalariak=new ListaJokalariak();
+	public static synchronized ListaJokalariak getNireListaJokalariak() {
+		if (ListaJokalariak.nireListaJokalariak==null) {
+			ListaJokalariak.nireListaJokalariak=new ListaJokalariak();
 		}
-		return nireListaJokalariak;
+		return ListaJokalariak.nireListaJokalariak;
 	}
 	public Jokalaria[] getZerrenda() {
 		return lista;
 	}
 	
 	public void partidaJolastu(){
-	while(!bukaera()){
+		System.out.println("Sartu zure izena");
+		String izena=Teklatua.getNireTeklatua().irakurriString();
+		this.getNireListaJokalariak().getZerrenda()[0]=new JokalariArrunta(izena);
+		this.getNireListaJokalariak().getZerrenda()[1]=new JokalariCPU();
+		this.getZerrenda()[0].puntuakErreseteatu();
+		this.getZerrenda()[1].puntuakErreseteatu();
+		while(!bukaera()){
+			rondaJolastu();
+			rondaBukatu();
+		}
+		try {
+			if(this.getZerrenda()[0].getPuntuak()>= Gehienezko_puntuazioa && this.getZerrenda()[1].getPuntuak()>= Gehienezko_puntuazioa) {
+				throw new RondaExtraSalbuespena();
+			}
+		}catch(RondaExtraSalbuespena e) {
+			e.inprimatuMezua();
+			rondaExtraJolastu();
+		}
+		if(this.getZerrenda()[0].getPuntuak()>this.getZerrenda()[1].getPuntuak()) {
+			System.out.println("ZORIONAK IRABAZI DUZU!!");
+		}else {
+			if(this.getZerrenda()[1].getPuntuak()>this.getZerrenda()[0].getPuntuak()) {
+				System.out.println("ZORTE TXARRA, GALDU DUZU");
+			}
+		}
+	}
+	
+	public void rondaExtraJolastu() {
 		rondaJolastu();
 		rondaBukatu();
+		if(this.getZerrenda()[0].getPuntuak()>this.getZerrenda()[1].getPuntuak()) {
+			System.out.println("ZORIONAK IRABAZI DUZU!!");
+		}else {
+			if(this.getZerrenda()[1].getPuntuak()>this.getZerrenda()[0].getPuntuak()) {
+				System.out.println("ZORTE TXARRA, GALDU DUZU");
+			}else {
+				rondaExtraJolastu();
+			}
+		}
 	}
-	}
-	
-	
 	
 	
 	public boolean bukaera() {
 		return  this.getZerrenda()[0].getPuntuak()>= Gehienezko_puntuazioa || this.getZerrenda()[1].getPuntuak()>= Gehienezko_puntuazioa;
 	}
 	public void rondaJolastu(){
+		this.jokoaBerrabiarazi();
 		this.kartakBanatu();
 		MahaikoKartak.getNireMahaikoKartak().banatuLau();
 		int i=MahaikoKartak.getNireMahaikoKartak().banatzeanEskobaKop();
 		this.lista[0].puntuakGehitu(i);
+		while(!rondarenBukaeraKonprobatu()) {
+			while(!banaketaBeharrezkoaDa()) {
+				this.getZerrenda()[0].jokaldiaEgin();
+				this.getZerrenda()[1].jokaldiaEgin();
+			}
+			this.kartakBanatu();
+		}
 		
+	}
+	public boolean rondarenBukaeraKonprobatu() {
+		return this.getZerrenda()[0].getEskukoKartak()==null && this.getZerrenda()[1].getEskukoKartak()==null && Baraja.getNireBaraja()==null;
+	}
+	public boolean banaketaBeharrezkoaDa() {
+		return this.getZerrenda()[0].getEskukoKartak()==null && this.getZerrenda()[1].getEskukoKartak()==null;
 	}
 	public void rondaBukatu(){
 		this.getZerrenda()[0].puntuakGehitu(this.getZerrenda()[0].puntuenBanaketa());
@@ -63,6 +111,13 @@ public class ListaJokalariak {
 			eskoba=true;
 		}
 		return eskoba;
+	}
+	public void jokoaBerrabiarazi() {
+		this.getZerrenda()[0].denaErreseteatu();
+		this.getZerrenda()[1].denaErreseteatu();
+		MahaikoKartak.getNireMahaikoKartak().erreseteatu();
+		Baraja.getNireBaraja().reset();
+		
 	}
 
 
