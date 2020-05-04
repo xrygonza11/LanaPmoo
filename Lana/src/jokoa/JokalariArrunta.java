@@ -88,10 +88,14 @@ public class JokalariArrunta extends Jokalaria{
 		}
 		if(denaOndo) {
 			k2= MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(aukera);
-			if(k2==null) {
-				System.out.println("Aukeratutako posizioan ez dago kartarik, aukeratu beste bat.");
-				this.aukeratuMahaikoKartak(pJokaldiPuntuak);
-			}
+			try {
+				if(k2==null) {
+					throw new AukeratutakoKartaOkerraSalbuespena();
+				}
+				}catch(AukeratutakoKartaOkerraSalbuespena e){
+					e.inprimatuMezua();
+					this.aukeratuMahaikoKartak(pJokaldiPuntuak);
+				}	
 			this.getJokaldikoKartak().gehituKarta(k2);
 			MahaikoKartak.getNireMahaikoKartak().kenduKartaPos(aukera);
 			pJokaldiPuntuak=pJokaldiPuntuak+k2.getZenb();
