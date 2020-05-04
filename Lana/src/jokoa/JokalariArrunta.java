@@ -145,11 +145,15 @@ public class JokalariArrunta extends Jokalaria{
 		}
 		if(denaOndo) {
 			k=getEskukoKartak().getKarta(aukera);
-			if(k==null) {
-				System.out.println("Aukeratutako posizioan ez dago kartarik, aukeratu beste bat.");
-				this.turnoaBukatu();
+			try {
+				if(k==null) {
+					throw new AukeratutakoKartaOkerraSalbuespena();
+				}
+				}catch(AukeratutakoKartaOkerraSalbuespena e){
+					e.inprimatuMezua();
+					this.turnoaBukatu();
+				}
 			}
-		}
 		MahaikoKartak.getNireMahaikoKartak().gehituKarta(k);
 		this.getEskukoKartak().kenduKarta(aukera);
 	}
