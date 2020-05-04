@@ -1,6 +1,8 @@
 package jokoa;
 import java.util.Iterator;
+import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.*;
 
 public class ListaJokalariak {
 	//atributuak
@@ -23,6 +25,43 @@ public class ListaJokalariak {
 	public Jokalaria[] getZerrenda() {
 		return lista;
 	}
+	
+	public static void irakurri(File txt){
+		FileReader fr=null;
+		BufferedReader br=null;
+		
+		try{
+			fr= new FileReader(txt);
+			br= new BufferedReader(fr);
+			String lerroa;
+			while((lerroa=br.readLine())!=null)
+				System.out.println(lerroa);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	public void partidaHasieratu(){
+		File txt= new File ("C:\\Users\\Unai\\Desktop\\Hasiera.txt");
+		irakurri(txt);
+		int sarrera=Teklatua.getNireTeklatua().irakurriChar();
+		try{
+			if(sarrera!=1 && sarrera!=2){
+				throw new HasieranAukeraOkerraSalbuespena();
+			}
+				
+		}catch(HasieranAukeraOkerraSalbuespena e){
+			e.inprimatuMezua();
+			partidaHasieratu();
+		}
+		if(sarrera==1){
+			partidaJolastu();
+		}
+		else if(sarrera==2){
+			File txt1= new File ("C:\\Users\\Unai\\Desktop\\ARAUAK.txt");
+			irakurri(txt1);
+			}
+			}
 	
 	public void partidaJolastu(){
 		System.out.println("Sartu zure izena");

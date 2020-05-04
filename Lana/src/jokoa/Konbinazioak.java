@@ -24,11 +24,9 @@ public class Konbinazioak{
 			this.lista.add(pKonbi);
 		}
 		public void konbinazioEraketa(){
-			//??
+
 		}
-		public ListaKartak konbinazioOnena(){
-			//??
-		}
+
 		public void erreseteatu(){
 			this.lista.clear();
 		}
