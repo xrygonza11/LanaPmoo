@@ -59,13 +59,18 @@ public class JokalariArrunta extends Jokalaria{
 		}
 		if(denaOndo) {
 			k=getEskukoKartak().getKarta(aukera);
+			try {
 			if(k==null) {
-				System.out.println("Aukeratutako posizioan ez dago kartarik, aukeratu beste bat.");
+				throw new AukeratutakoKartaOkerraSalbuespena();
+			}
+			}catch(AukeratutakoKartaOkerraSalbuespena e){
+				e.inprimatuMezua();
 				this.aukeratuEskukoKarta();
 			}
-		}
+			}
 		return k;
-	}
+		}
+		
 	public void aukeratuMahaikoKartak(int pJokaldiPuntuak){
 		Karta k2=null;
 		int aukera=0;
