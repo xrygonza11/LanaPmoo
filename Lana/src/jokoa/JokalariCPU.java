@@ -11,7 +11,7 @@ public class JokalariCPU extends Jokalaria {
 	//gainontzeko metodoak
 	
 	public void jokaldiaEgin(){
-		this.getKonbinazioak().konbinazioOnena();
+		this.getKonbinazioak().konbinazioEraketa();
 	}
 	public void turnoaBukatu(){
 		MahaikoKartak.getNireMahaikoKartak().gehituKarta(this.baloreGutxiengoKarta());
