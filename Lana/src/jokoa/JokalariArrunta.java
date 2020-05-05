@@ -57,6 +57,9 @@ public class JokalariArrunta extends Jokalaria{
 		else {
 			turnoaBukatu();
 		}
+		if (ListaJokalariak.getNireListaJokalariak().eskobaDa()){
+			this.puntuakGehitu(1);
+		}
 	}
 	public Karta aukeratuEskukoKarta(){
 		Karta k=null;
