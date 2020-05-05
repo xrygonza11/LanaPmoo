@@ -45,27 +45,27 @@ public class ListaJokalariak {
 	public void partidaHasieratu(){
 		File txt= new File ("res/Hasiera.txt");
 		irakurri(txt);
-		int sarrera=Teklatua.getNireTeklatua().irakurriChar();
+		int sarrera=Teklatua.getNireTeklatua().irakurriOsoa();
 		try{
-			if(sarrera!=1 && sarrera!=2){
-				throw new HasieranAukeraOkerraSalbuespena();
+			if(sarrera==1){
+				partidaJolastu();
 			}
+			else if(sarrera==2){
+				File txt1= new File ("res/ARAUAK.txt");
+				irakurri(txt1);
+				System.out.println("Sakatu enter menura itzultzeko");
+				Teklatua.getNireTeklatua().irakurriEnter();
+				partidaHasieratu();
+				}
+			
+			else
+				throw new HasieranAukeraOkerraSalbuespena();
 			
 		}catch(HasieranAukeraOkerraSalbuespena e){
 			e.inprimatuMezua();
 			partidaHasieratu();
 		}
-		if(sarrera==1){
-			partidaJolastu();
-		}
-		else if(sarrera==2){
-			File txt1= new File ("res/ARAUAK.txt");
-			irakurri(txt1);
-			System.out.println("Sakatu enter menura itzultzeko");
-			Teklatua.getNireTeklatua().irakurriEnter();
-			partidaHasieratu();
-			}
-			}
+	}
 	public void partidaJolastu(){
 		System.out.println("Sartu zure izena");
 		String izena=Teklatua.getNireTeklatua().irakurriString();
