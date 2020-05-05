@@ -7,7 +7,11 @@ import java.util.Iterator;
 public class ListaKartak {
 	//atributuak
 	private ArrayList<Karta> lista;
-	private int kartaKop;
+	private int kartaKop=0;
+	//eraikitzaile
+	public ListaKartak() {
+		lista=new ArrayList<Karta>();
+	}
 	//gainontzeko metodoak
 	public Karta getKarta(int pPos) {
 		Karta k = lista.get(pPos);
@@ -23,6 +27,7 @@ public class ListaKartak {
 	}
 	public void gehituKarta(Karta pKarta){
 		this.lista.add(pKarta);
+		this.kartaKop=kartaKop+1;
 	}
 	public void erreseteatu(){
 		this.lista.clear();

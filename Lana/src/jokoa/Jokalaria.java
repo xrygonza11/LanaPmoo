@@ -9,11 +9,15 @@ public abstract class Jokalaria {
 	private int puntuak;
 	private ListaKartak eskukoKartak;
 	private ListaKartak lortutakoKartak;
+	private ListaKartak jokaldikoKartak;
+	private Konbinazioak konbi;
 	//eraikitzaileak
 	public Jokalaria (){
 		this.puntuak=0;
 		this.eskukoKartak=new ListaKartak();
 		this.lortutakoKartak=new ListaKartak();
+		this.jokaldikoKartak=new ListaKartak();
+		this.konbi=Konbinazioak.getNireKonbinazioak();
 	}
 	
 	//gainontzeko metodoak
@@ -22,6 +26,12 @@ public abstract class Jokalaria {
 	}
 	protected ListaKartak getLortutakoKartak(){
 		return this.lortutakoKartak;
+	}
+	protected ListaKartak getJokaldikoKartak() {
+		return this.jokaldikoKartak;
+	}
+	protected Konbinazioak getKonbinazioak() {
+		return this.konbi;
 	}
 	protected int getPuntuak(){
 		return this.puntuak;
@@ -74,16 +84,16 @@ public abstract class Jokalaria {
 		return puntuak;
 	}
 
-	public void berriabiarazi() {
+	public void puntuakErreseteatu() {
 		puntuak=0;
-		lortutakoKartak.erreseteatu();
 	}
-
-	public void jokatuKarta(Teklatua tk){
-		int t;
-		t=tk.irakurriOsoa();
-		lortutakoKartak.gehituKarta(eskukoKartak.getKarta(t));
-		eskukoKartak.kenduKarta(t);
+	public void denaErreseteatu() {
+		this.getEskukoKartak().erreseteatu();
+		this.getJokaldikoKartak().erreseteatu();
+		this.getKonbinazioak().getKonbiKartak().erreseteatu();
+		this.getLortutakoKartak().erreseteatu();
 	}
+	public abstract void jokaldiaEgin();
+	
 
 }

@@ -1,13 +1,15 @@
 package jokoa;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Baraja {
 	//atributuak
 	private ListaKartak lista;
 	private static Baraja nireBaraja=null;
+	//eraikitzailea
+	private Baraja() {
+		lista=new ListaKartak();
+	}
 
 	//gainontzeko metodoak
 	

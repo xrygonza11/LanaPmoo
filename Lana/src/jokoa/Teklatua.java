@@ -63,6 +63,7 @@ public class Teklatua {
 	}
 	
 	public void irakurriEnter() {
+		System.out.println("Sakatu enter jarraitzeko");
 		this.sc.nextLine();
 	}
 }
