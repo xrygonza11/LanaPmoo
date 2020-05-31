@@ -1,14 +1,12 @@
 package jokoa;
 
+import java.util.Iterator;
+
 public class Konbinazioak{
 		//atributuak
 		private static Konbinazioak nireKonbinazioak=null;
 		private boolean aurkitua=false;
-		private ListaKartak konbiKartak;
-		//eraikitzailea
-		private Konbinazioak() {
-			konbiKartak=new ListaKartak();
-		}
+		private Matrizea konbiKartak;
 		//gainontzeko metodoak
 		
 		public static Konbinazioak getNireKonbinazioak() {
@@ -18,22 +16,17 @@ public class Konbinazioak{
 			return nireKonbinazioak;
 		}
 
-		public ListaKartak getKonbiKartak(){
-			return konbiKartak;
-		}
 		public boolean konbinazioOnena(){
 			int i=0;
 			ListaKartak lk=ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getEskukoKartak();
 			ListaKartak jk=ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getJokaldikoKartak();
-			ListaKartak gk=ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak();
-			while(i<lk.getKartaKop()&&!aurkitua) {
+			while(i<lk.getKartaKop()) {
 				Karta k=lk.getKarta(i);
-				konbinazioakEgin(0,0,15-k.getZenb(),jk,MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak());
+				konbinazioakEgin(0,0,15-k.getZenb(),jk,MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak(),konbiKartak,k);
 				i++;
 			}
-			Karta k=lk.getKarta(i-1);
 			if(aurkitua) {
-				gk.gehituKarta(k);
+				konbinazioOnenaAukeratu();
 			}
 			return aurkitua;
 			/*
@@ -50,42 +43,55 @@ public class Konbinazioak{
 			 */
 			
 		}
-		private void konbinazioakEgin(int l, int sum, int K, ListaKartak local,ListaKartak A){ 
+		private void konbinazioakEgin(int l, int sum, int K, ListaKartak local,ListaKartak A, Matrizea matrize, Karta karta){ 
 			// If a unique combination is found 
 
 			if (sum == K)  { 
-				konbiKartak=local;
+				local.gehituKarta(karta);
+				konbiKartak.gehituLista(local);
 				aurkitua=true;
-				for(int i=0;i<local.getKartaKop();i++) {
-					Karta k=local.getKarta(i);
-					ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak().gehituKarta(k);
-				}
+				local.erreseteatu();
 				//hacer que local sea el array del jokaldi
 				//aurkitua true
 				//ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak().imprimatuKartak();
 				return; 
-			} 
+			}
 
 			// For all other combinations 
 			for (int i = l; i < A.getKartaKop(); i++){ 
 
 				// Check if the sum exceeds K 
-				//if (sum + A.getKarta(i).getZenb() > K) 
-					//continue; 
+				if (sum + A.getKarta(i).getZenb() > K) 
+					continue; 
 
 				// Check if it is repeated or not 
-				//if (i == 1 && A.getKarta(i).getZenb() == A.getKarta(i - 1).getZenb() &&  i > l) 
-					//continue; 
+				if (i == 1 && A.getKarta(i).getZenb() == A.getKarta(i - 1).getZenb() &&  i > l) 
+					continue; 
 
 				// Take the element into the combination 
 				local.gehituKarta(A.getKarta(i)); 
 
 				// Recursive call 
 				if(!aurkitua)
-				konbinazioakEgin(i + 1, sum + A.getKarta(i).getZenb(), K, local, A); 
+				konbinazioakEgin(i + 1, sum + A.getKarta(i).getZenb(), K, local, A, matrize,karta); 
 
 				// Remove element from the combination 
 				local.kenduKarta(local.getKartaKop() - 1); 
 			} 
+		}
+		private void konbinazioOnenaAukeratu() {
+			konbiKartak.puntuazioakEman();
+			ListaKartak l=konbiKartak.getLista(konbiKartak.puntuazioAltuenaAukeratu());
+			Iterator<Karta> itr=l.getIteradorea();
+			Karta k=null;
+			while(itr.hasNext()) {
+				k=itr.next();
+				ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak().gehituKarta(k);
+				ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getJokaldikoKartak().gehituKarta(k);
+			}
+			
+		}
+		public Matrizea getKonbiKartak() {
+			return konbiKartak;
 		}
 }

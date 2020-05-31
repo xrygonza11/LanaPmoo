@@ -1,13 +1,13 @@
 package jokoa;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Iterator;
 
 public class ListaKartak {
 	//atributuak
 	private ArrayList<Karta> lista;
 	private int kartaKop=0;
+	private int puntuazioa=0;
 	//eraikitzaile
 	public ListaKartak() {
 		lista=new ArrayList<Karta>();
@@ -46,4 +46,11 @@ public class ListaKartak {
 	public int getKartaKop(){
 		return this.kartaKop;
 	}
+	public void gehituPuntuazioa(int pPunt) {
+		puntuazioa=puntuazioa+pPunt;
+	}
+	public int getPuntuazioa() {
+		return puntuazioa;
+	}
+	
 }

@@ -44,7 +44,9 @@ public class Baraja {
 		}
 		return k;
 	}
-	
+	public ListaKartak getBaraja() {
+		return lista;
+	}
 	
 	
 	

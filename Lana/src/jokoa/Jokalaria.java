@@ -1,9 +1,5 @@
 package jokoa;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
-
 public abstract class Jokalaria {
 	//atributuak
 	private int puntuak;
@@ -94,6 +90,7 @@ public abstract class Jokalaria {
 		this.getLortutakoKartak().erreseteatu();
 	}
 	public abstract void jokaldiaEgin();
+	public abstract void turnoaBukatu();
 	
 
 }

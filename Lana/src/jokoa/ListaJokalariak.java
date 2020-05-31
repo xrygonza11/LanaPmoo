@@ -1,6 +1,4 @@
 package jokoa;
-import java.util.Iterator;
-import java.util.ArrayList;
 
 public class ListaJokalariak {
 	//atributuak
@@ -27,20 +25,15 @@ public class ListaJokalariak {
 	public void partidaJolastu(){
 		System.out.println("Sartu zure izena");
 		String izena=Teklatua.getNireTeklatua().irakurriString();
-		this.getNireListaJokalariak().getZerrenda()[0]=new JokalariArrunta(izena);
-		this.getNireListaJokalariak().getZerrenda()[1]=new JokalariCPU();
+		ListaJokalariak.getNireListaJokalariak().getZerrenda()[0]=new JokalariArrunta(izena);
+		ListaJokalariak.getNireListaJokalariak().getZerrenda()[1]=new JokalariCPU();
 		this.getZerrenda()[0].puntuakErreseteatu();
 		this.getZerrenda()[1].puntuakErreseteatu();
-		while(!bukaera()){
+		while(!bukaeraKonprobatu()){
 			rondaJolastu();
 			rondaBukatu();
 		}
-		try {
-			if(this.getZerrenda()[0].getPuntuak()>= Gehienezko_puntuazioa && this.getZerrenda()[1].getPuntuak()>= Gehienezko_puntuazioa) {
-				throw new RondaExtraSalbuespena();
-			}
-		}catch(RondaExtraSalbuespena e) {
-			e.inprimatuMezua();
+		if(this.getZerrenda()[0].getPuntuak()>= Gehienezko_puntuazioa && this.getZerrenda()[1].getPuntuak()>= Gehienezko_puntuazioa) {
 			rondaExtraJolastu();
 		}
 		if(this.getZerrenda()[0].getPuntuak()>this.getZerrenda()[1].getPuntuak()) {
@@ -67,8 +60,12 @@ public class ListaJokalariak {
 	}
 	
 	
-	public boolean bukaera() {
-		return  this.getZerrenda()[0].getPuntuak()>= Gehienezko_puntuazioa || this.getZerrenda()[1].getPuntuak()>= Gehienezko_puntuazioa;
+	public boolean bukaeraKonprobatu() {
+		boolean b=false;
+		if(this.getZerrenda()[0].getPuntuak()>= Gehienezko_puntuazioa || this.getZerrenda()[1].getPuntuak()>= Gehienezko_puntuazioa) {
+			b=true;
+		}
+		return b;
 	}
 	public void rondaJolastu(){
 		this.jokoaBerrabiarazi();
@@ -86,10 +83,18 @@ public class ListaJokalariak {
 		
 	}
 	public boolean rondarenBukaeraKonprobatu() {
-		return this.getZerrenda()[0].getEskukoKartak()==null && this.getZerrenda()[1].getEskukoKartak()==null && Baraja.getNireBaraja()==null;
+		boolean b=false;
+		if(this.getZerrenda()[0].getEskukoKartak().getKartaKop()==0 && this.getZerrenda()[1].getEskukoKartak().getKartaKop()==0 && Baraja.getNireBaraja().getBaraja().getKartaKop()==0) {
+			b=true;
+		}
+		return b;
 	}
 	public boolean banaketaBeharrezkoaDa() {
-		return this.getZerrenda()[0].getEskukoKartak()==null && this.getZerrenda()[1].getEskukoKartak()==null;
+		boolean b=false;
+		if(this.getZerrenda()[0].getEskukoKartak().getKartaKop()==0 && this.getZerrenda()[1].getEskukoKartak().getKartaKop()==0) {
+			b=true;
+		}
+		return b;
 	}
 	public void rondaBukatu(){
 		this.getZerrenda()[0].puntuakGehitu(this.getZerrenda()[0].puntuenBanaketa());
@@ -108,7 +113,7 @@ public class ListaJokalariak {
 	}
 	public boolean eskobaDa() {
 		boolean eskoba=false;
-		if(MahaikoKartak.getNireMahaikoKartak()==null) {
+		if(MahaikoKartak.getNireMahaikoKartak().getKartaKop()==0) {
 			eskoba=true;
 		}
 		return eskoba;

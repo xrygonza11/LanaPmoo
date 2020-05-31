@@ -58,7 +58,7 @@ public class JokalariArrunta extends Jokalaria{
 			turnoaBukatu();
 		}
 	}
-	public Karta aukeratuEskukoKarta(){
+	private Karta aukeratuEskukoKarta(){
 		Karta k=null;
 		Boolean denaOndo=false;
 		String sarrera=Teklatua.getNireTeklatua().irakurriString();
@@ -80,7 +80,7 @@ public class JokalariArrunta extends Jokalaria{
 		return k;
 		}
 		
-	public void aukeratuMahaikoKartak(){
+	private void aukeratuMahaikoKartak(){
 		//System.out.println("Orain mahaiko kartak aukeratu");
 		//MahaikoKartak.getNireMahaikoKartak().imprimatuKartak();
 		Karta k2=null;
@@ -131,7 +131,7 @@ public class JokalariArrunta extends Jokalaria{
 		}
 		
 	}
-	public void mahaikoAukeraketaEgin(Karta k2,int pAukera) {
+	private void mahaikoAukeraketaEgin(Karta k2,int pAukera) {
 		try {
 			k2= MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(pAukera-1);
 			}catch(IndexOutOfBoundsException e){

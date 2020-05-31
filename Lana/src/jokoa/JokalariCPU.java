@@ -18,26 +18,31 @@ public class JokalariCPU extends Jokalaria {
 		 }else {
 			 //ListaKartak jk=this.getJokaldikoKartak();
 			 //(jk.imprimatuKartak();
-			 ListaKartak lk=this.getLortutakoKartak();
+			 ListaKartak jk=this.getJokaldikoKartak();
 			 //ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getJokaldikoKartak().imprimatuKartak();
 			 //ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak().imprimatuKartak();
-			 for(int i=0;i<lk.getKartaKop();i++) {
-				 for(int j=0;j<MahaikoKartak.getNireMahaikoKartak().getKartaKop();j++) {
-					 if(lk.getKarta(i).getPalo()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getPalo() && lk.getKarta(i).getZenb()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getZenb()) {
-						 MahaikoKartak.getNireMahaikoKartak().kenduKartaPos(j);
-					 }
-				 }
+			for(int j=0;j<MahaikoKartak.getNireMahaikoKartak().getKartaKop();j++) {
+				if(jk.getKarta(0).getPalo()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getPalo() && jk.getKarta(0).getZenb()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getZenb()) {
+					MahaikoKartak.getNireMahaikoKartak().kenduKartaPos(j);
+					jk.kenduKarta(0);
+				}
 				  
-			 }
-			 System.out.println("CPU-k konbinazio bat egin du");
+			}
+			for(int h=0;h<this.getEskukoKartak().getKartaKop();h++) {
+				if(jk.getKarta(0).getPalo()==this.getEskukoKartak().getKarta(h).getPalo() && jk.getKarta(0).getZenb()==this.getEskukoKartak().getKarta(h).getZenb()) {
+					this.getEskukoKartak().kenduKarta(h);
+					jk.kenduKarta(0);
+				}
+			}
+			System.out.println(izena+"-k konbinazio bat egin du");
 		 }
 	}
 	public void turnoaBukatu(){
 		MahaikoKartak.getNireMahaikoKartak().gehituKarta(this.baloreGutxiengoKarta());
-		System.out.println("CPU-k ez du konbinaziorik lortu");
+		System.out.println(izena+"-k ez du konbinaziorik lortu");
 		System.out.println("Zure txanda da...");
 	}
-	public Karta baloreGutxiengoKarta(){
+	private Karta baloreGutxiengoKarta(){
 		int i=0;
 		Karta k=null;
 		Karta kt=this.getEskukoKartak().getKarta(i);
