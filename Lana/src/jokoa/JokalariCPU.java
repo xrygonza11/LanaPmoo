@@ -11,32 +11,27 @@ public class JokalariCPU extends Jokalaria {
 	//gainontzeko metodoak
 	
 	public void jokaldiaEgin(){
-		if(MahaikoKartak.getNireMahaikoKartak().getKartaKop()==0){
-			turnoaBukatu();
-		}
-		else{
-			Konbinazioak k=this.getKonbinazioak();
-			boolean a=k.konbinazioOnena();
-			 if(!a) {
-			 	turnoaBukatu();
-			 }else {
-				 //ListaKartak jk=this.getJokaldikoKartak();
-				 //(jk.imprimatuKartak();
-				 ListaKartak lk=this.getLortutakoKartak();
-				 //ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getJokaldikoKartak().imprimatuKartak();
-				 //ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak().imprimatuKartak();
-				 for(int i=0;i<lk.getKartaKop();i++) {
-					 for(int j=0;j<MahaikoKartak.getNireMahaikoKartak().getKartaKop();j++) {
-						 if(lk.getKarta(i).getPalo()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getPalo() && lk.getKarta(i).getZenb()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getZenb()) {
-							 MahaikoKartak.getNireMahaikoKartak().kenduKartaPos(j);
-						 }
+		Konbinazioak k=this.getKonbinazioak();
+		boolean a=k.konbinazioOnena();
+		 if(!a) {
+		 	turnoaBukatu();
+		 }else {
+			 //ListaKartak jk=this.getJokaldikoKartak();
+			 //(jk.imprimatuKartak();
+			 ListaKartak lk=this.getLortutakoKartak();
+			 //ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getJokaldikoKartak().imprimatuKartak();
+			 //ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak().imprimatuKartak();
+			 for(int i=0;i<lk.getKartaKop();i++) {
+				 for(int j=0;j<MahaikoKartak.getNireMahaikoKartak().getKartaKop();j++) {
+					 if(lk.getKarta(i).getPalo()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getPalo() && lk.getKarta(i).getZenb()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getZenb()) {
+						 MahaikoKartak.getNireMahaikoKartak().kenduKartaPos(j);
 					 }
-					  
 				 }
-				 System.out.println("CPU-k konbinazio bat egin du");
+				  
 			 }
+			 System.out.println("CPU-k konbinazio bat egin du");
+		 }
 	}
-    }
 	public void turnoaBukatu(){
 		MahaikoKartak.getNireMahaikoKartak().gehituKarta(this.baloreGutxiengoKarta());
 		System.out.println("CPU-k ez du konbinaziorik lortu");
