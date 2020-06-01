@@ -1,5 +1,7 @@
 package jokoa;
 
+import java.util.Iterator;
+
 public class MahaikoKartak {
 	//atributuak
 		private ListaKartak lista;
@@ -54,19 +56,17 @@ public class MahaikoKartak {
 			int eskobakop=0;
 			Karta k=null;
 			int  kartenBalioa=0;
-			int i=0;
-			while(i<this.lista.getKartaKop()) {
-				k=this.lista.getKarta(i);
+			Iterator<Karta>itr=lista.getIteradorea();
+			while(itr.hasNext()) {
+				k=itr.next();
 				kartenBalioa=kartenBalioa+k.getZenb();
-				i++;
 			}
 			if(kartenBalioa==15) {
 				eskobakop=1;
-			}else{
-				if(kartenBalioa==30){
-					eskobakop=2;
-			}	
 			}
+			if(kartenBalioa==30){
+				eskobakop=2;
+			}	
 			return eskobakop;
 		}
 }

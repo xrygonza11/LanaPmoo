@@ -23,6 +23,7 @@ public class ListaJokalariak {
 	}
 	
 	public void partidaJolastu(){
+		clear();
 		System.out.println("Sartu zure izena");
 		String izena=Teklatua.getNireTeklatua().irakurriString();
 		ListaJokalariak.getNireListaJokalariak().getZerrenda()[0]=new JokalariArrunta(izena);
@@ -75,6 +76,7 @@ public class ListaJokalariak {
 		this.lista[0].puntuakGehitu(i);
 		while(!rondarenBukaeraKonprobatu()) {
 			while(!banaketaBeharrezkoaDa()) {
+				clear();
 				this.getZerrenda()[0].jokaldiaEgin();
 				this.getZerrenda()[1].jokaldiaEgin();
 			}
@@ -124,6 +126,13 @@ public class ListaJokalariak {
 		MahaikoKartak.getNireMahaikoKartak().erreseteatu();
 		Baraja.getNireBaraja().reset();
 		
+	}
+	public static void clear() {
+		try {
+			new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+		}catch(Exception E) {
+			System.out.println(E);
+		}
 	}
 
 

@@ -86,7 +86,7 @@ public abstract class Jokalaria {
 	public void denaErreseteatu() {
 		this.getEskukoKartak().erreseteatu();
 		this.getJokaldikoKartak().erreseteatu();
-		this.getKonbinazioak().getKonbiKartak().erreseteatu();
+		//this.getKonbinazioak().getKonbiKartak().erreseteatu();
 		this.getLortutakoKartak().erreseteatu();
 	}
 	public abstract void jokaldiaEgin();
