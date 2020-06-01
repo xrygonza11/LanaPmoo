@@ -157,7 +157,7 @@ public class ListaJokalariak {
 	}
 	public boolean eskobaDa() {
 		boolean eskoba=false;
-		if(MahaikoKartak.getNireMahaikoKartak().getKartaKop()==0) {
+		if(MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().getKartaKop()==0) {
 			eskoba=true;
 		}
 		return eskoba;
@@ -165,7 +165,7 @@ public class ListaJokalariak {
 	public void jokoaBerrabiarazi() {
 		this.getZerrenda()[0].denaErreseteatu();
 		this.getZerrenda()[1].denaErreseteatu();
-		MahaikoKartak.getNireMahaikoKartak().erreseteatu();
+		MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().erreseteatu();
 		Baraja.getNireBaraja().reset();
 		
 	}

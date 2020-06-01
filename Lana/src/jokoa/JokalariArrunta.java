@@ -116,7 +116,7 @@ public class JokalariArrunta extends Jokalaria{
 			for(i=1;i<this.getJokaldikoKartak().getKartaKop();i++) {//this.getJokaldikoKartak().getKartaKop()>0){
 				//int i=this.getJokaldikoKartak().getKartaKop();
 				k2=this.getJokaldikoKartak().getKarta(i-1);
-				MahaikoKartak.getNireMahaikoKartak().gehituKarta(k2);
+				MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().gehituKarta(k2);
 			}
 			this.getJokaldikoKartak().erreseteatu();
 			this.jokaldiaEgin();
@@ -133,7 +133,7 @@ public class JokalariArrunta extends Jokalaria{
 	}
 	private void mahaikoAukeraketaEgin(Karta k2,int pAukera) {
 		try {
-			k2= MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(pAukera-1);
+			k2= MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().getKarta(pAukera-1);
 			}catch(IndexOutOfBoundsException e){
 				System.out.println("Aukeratutako posizioan ez dago kartarik");
 				this.aukeratuMahaikoKartak();
@@ -141,7 +141,7 @@ public class JokalariArrunta extends Jokalaria{
 		jokaldiPuntuak=jokaldiPuntuak+k2.getZenb();
 		System.out.println("Jokaldiaren balorea: "+jokaldiPuntuak);
 		this.getJokaldikoKartak().gehituKarta(k2);
-		MahaikoKartak.getNireMahaikoKartak().kenduKartaPos(pAukera-1);
+		MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().kenduKarta(pAukera-1);
 	}
 	public void turnoaBukatu(){
 		System.out.println("Txanda bukatuko da, aukeratu karta bat mahaira botatzeko");
@@ -164,7 +164,7 @@ public class JokalariArrunta extends Jokalaria{
 					System.out.println("Aukeratutako posizioan ez dago kartarik");
 					this.turnoaBukatu();
 				}
-		MahaikoKartak.getNireMahaikoKartak().gehituKarta(k);
+		MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().gehituKarta(k);
 		this.getEskukoKartak().kenduKarta(aukera-1);
 	}
 	}

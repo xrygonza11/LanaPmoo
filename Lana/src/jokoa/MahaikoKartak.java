@@ -6,7 +6,6 @@ public class MahaikoKartak {
 	//atributuak
 		private ListaKartak lista;
 		private static MahaikoKartak nireMahaikoKartak=null;
-		private int kartaKop;
 	//eraikitzaile
 		public MahaikoKartak() {
 			this.lista=new ListaKartak();
@@ -23,34 +22,15 @@ public class MahaikoKartak {
 			while (kont>0){
 				this.lista.gehituKarta(Baraja.getNireBaraja().banaketa());
 				kont=kont-1;
-				this.kartaKop=this.kartaKop+1;
 			}
-		}
-		public void erreseteatu(){
-			this.lista.erreseteatu();
-			this.kartaKop=0;
 		}
 		public ListaKartak getMahaikoKartak() {
 			return this.lista;
-		}
-		public Karta lortuPosiziokoKarta(int pPos){
-			return this.lista.getKarta(pPos);
-		}
-		public int getKartaKop() {
-			return this.kartaKop;
-		}
-		public void gehituKarta(Karta k){
-			this.lista.gehituKarta(k);
-			this.kartaKop=this.kartaKop+1;
 		}
 		public void imprimatuKartak(){
 			System.out.println("Mahaiko Kartak:");
 			System.out.println(" ");
 			this.lista.imprimatuKartak();
-		}
-		public void kenduKartaPos(int pPos) {
-			this.lista.kenduKarta(pPos);
-			this.kartaKop=this.kartaKop-1;
 		}
 		public int banatzeanEskobaKop() {
 			int eskobakop=0;

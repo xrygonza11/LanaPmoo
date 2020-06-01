@@ -28,6 +28,7 @@ public class ListaKartak {
 	}
 	public void erreseteatu(){
 		this.lista.clear();
+		this.kartaKop=0;
 	}
 	public Iterator<Karta> getIteradorea(){
 		return this.lista.iterator();

@@ -21,9 +21,9 @@ public class JokalariCPU extends Jokalaria {
 			 ListaKartak jk=this.getJokaldikoKartak();
 			 //ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getJokaldikoKartak().imprimatuKartak();
 			 //ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak().imprimatuKartak();
-			for(int j=0;j<MahaikoKartak.getNireMahaikoKartak().getKartaKop();j++) {
-				if(jk.getKarta(0).getPalo()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getPalo() && jk.getKarta(0).getZenb()==MahaikoKartak.getNireMahaikoKartak().lortuPosiziokoKarta(j).getZenb()) {
-					MahaikoKartak.getNireMahaikoKartak().kenduKartaPos(j);
+			for(int j=0;j<MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().getKartaKop();j++) {
+				if(jk.getKarta(0).getPalo()==MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().getKarta(j).getPalo() && jk.getKarta(0).getZenb()==MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().getKarta(j).getZenb()) {
+					MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().kenduKarta(j);
 					jk.kenduKarta(0);
 				}
 				  
@@ -38,7 +38,7 @@ public class JokalariCPU extends Jokalaria {
 		 }
 	}
 	public void turnoaBukatu(){
-		MahaikoKartak.getNireMahaikoKartak().gehituKarta(this.baloreGutxiengoKarta());
+		MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().gehituKarta(this.baloreGutxiengoKarta());
 		System.out.println(izena+"-k ez du konbinaziorik lortu");
 		System.out.println("Zure txanda da...");
 	}
