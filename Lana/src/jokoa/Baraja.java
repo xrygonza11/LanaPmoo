@@ -41,6 +41,7 @@ public class Baraja {
 		if(lista.getKartaKop()>1){
 			int random=r.nextInt(lista.getKartaKop());
 			k=lista.getKarta(random);
+			lista.kenduKarta(random);
 		}
 		return k;
 	}
