@@ -1,5 +1,9 @@
 package jokoa;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
 public class ListaJokalariak {
 	//atributuak
 	private Jokalaria[]lista;
@@ -21,7 +25,45 @@ public class ListaJokalariak {
 	public Jokalaria[] getZerrenda() {
 		return lista;
 	}
-	
+	public static void irakurri(File txt){
+		FileReader fr=null;
+		BufferedReader br=null;
+		
+		try{
+			fr= new FileReader(txt);
+			br= new BufferedReader(fr);
+			String lerroa;
+			while((lerroa=br.readLine())!=null)
+				System.out.println(lerroa);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	public void partidaHasieratu(){
+		File txt= new File ("res/Hasiera.txt");
+		irakurri(txt);
+		int sarrera=Teklatua.getNireTeklatua().irakurriOsoa();
+		try{
+			if(sarrera==1){
+				partidaJolastu();
+			}
+			else if(sarrera==2){
+				File txt1= new File ("res/ARAUAK.txt");
+				irakurri(txt1);
+				System.out.println("Sakatu enter menura itzultzeko");
+				Teklatua.getNireTeklatua().irakurriEnter();
+				partidaHasieratu();
+				}
+			
+			else
+				throw new HasieranAukeraOkerraSalbuespena();
+			
+		}catch(HasieranAukeraOkerraSalbuespena e){
+			e.inprimatuMezua();
+			partidaHasieratu();
+		}
+	}
 	public void partidaJolastu(){
 		clear();
 		System.out.println("Sartu zure izena");
