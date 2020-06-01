@@ -22,9 +22,6 @@ public class ListaKartak {
 		kartaKop=kartaKop-1;
 		
 	}
-	public void setKartaKop(int pKartaKop){
-		this.kartaKop=pKartaKop;
-	}
 	public void gehituKarta(Karta pKarta){
 		this.lista.add(pKarta);
 		this.kartaKop=kartaKop+1;

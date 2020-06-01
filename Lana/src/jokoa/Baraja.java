@@ -27,7 +27,6 @@ public class Baraja {
 			lista.gehituKarta(new Karta(i,"EZPATAK"));
 			lista.gehituKarta(new Karta(i,"BASTOIAK"));
 		}
-		lista.setKartaKop(40);
 	}
 	
 	public void reset() {
