@@ -15,9 +15,13 @@ public class Konbinazioak{
 			}
 			return nireKonbinazioak;
 		}
+		public Konbinazioak() {
+			konbiKartak=new Matrizea();
+		}
 
 		public boolean konbinazioOnena(){
 			int i=0;
+			konbiKartak.erreseteatu();
 			ListaKartak lk=ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getEskukoKartak();
 			ListaKartak jk=ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getJokaldikoKartak();
 			while(i<lk.getKartaKop()) {
@@ -76,7 +80,7 @@ public class Konbinazioak{
 				konbinazioakEgin(i + 1, sum + A.getKarta(i).getZenb(), K, local, A, matrize,karta); 
 
 				// Remove element from the combination 
-				local.kenduKarta(local.getKartaKop() - 1); 
+				//local.kenduKarta(local.getKartaKop()-1); 
 			} 
 		}
 		private void konbinazioOnenaAukeratu() {
