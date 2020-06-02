@@ -17,19 +17,19 @@ public abstract class Jokalaria {
 	}
 	
 	//gainontzeko metodoak
-	protected ListaKartak getEskukoKartak(){
+	public ListaKartak getEskukoKartak(){
 		return this.eskukoKartak;
 	}
-	protected ListaKartak getLortutakoKartak(){
+	public ListaKartak getLortutakoKartak(){
 		return this.lortutakoKartak;
 	}
-	protected ListaKartak getJokaldikoKartak() {
+	public ListaKartak getJokaldikoKartak() {
 		return this.jokaldikoKartak;
 	}
-	protected Konbinazioak getKonbinazioak() {
+	public Konbinazioak getKonbinazioak() {
 		return this.konbi;
 	}
-	protected int getPuntuak(){
+	public int getPuntuak(){
 		return this.puntuak;
 	}
 	public void puntuakGehitu(int e) {

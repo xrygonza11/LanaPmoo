@@ -4,10 +4,16 @@ ONGI ETORRIAK ESKOBA JOKORA:
 Aukeratu zeregina:
 
 
-1. Jokoa hasi
+1. CPU-ren kontra jokatu
 
 
-2.Jokoaren Arauak ikusi
+2. Jokalarien artean jokatu
+
+
+3. Arauak ikusi
+
+
+4. Irten
 
 
 

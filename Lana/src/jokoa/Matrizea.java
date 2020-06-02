@@ -62,5 +62,13 @@ public class Matrizea {
 		}
 		return i;
 	}
+	public void imprimatuMatrizea() {
+		Iterator<ListaKartak> itr=this.getIteradorea();
+		ListaKartak l=new ListaKartak();
+		while(itr.hasNext()) {
+			l=itr.next();
+			l.imprimatuKartak();
+		}
+	}
 
 }

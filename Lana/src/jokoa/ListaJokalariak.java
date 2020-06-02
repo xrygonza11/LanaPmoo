@@ -41,35 +41,44 @@ public class ListaJokalariak {
 		}
 	}
 	public void partidaHasieratu(){
-		File txt= new File ("res/Hasiera.txt");
-		irakurri(txt);
-		int sarrera=Teklatua.getNireTeklatua().irakurriOsoa();
-		try{
-			if(sarrera==1){
+		do {
+			clear();
+			File txt= new File ("res/Hasiera.txt");
+			irakurri(txt);
+			int sarrera=Teklatua.getNireTeklatua().irakurriAukera(1,4);
+			switch(sarrera) {
+			case 1:
+				clear();
+				System.out.println("Sartu zure izena");
+				String izena=Teklatua.getNireTeklatua().irakurriString();
+				ListaJokalariak.getNireListaJokalariak().getZerrenda()[0]=new JokalariArrunta(izena);
+				ListaJokalariak.getNireListaJokalariak().getZerrenda()[1]=new JokalariCPU();
 				partidaJolastu();
-			}
-			else if(sarrera==2){
+				break;
+			case 2:
+				clear();
+				System.out.println("Sartu zure izena");
+				String izena2=Teklatua.getNireTeklatua().irakurriString();
+				ListaJokalariak.getNireListaJokalariak().getZerrenda()[0]=new JokalariArrunta(izena2);
+				System.out.println("Sartu bigarren jokalariaren izena");
+				String izena3=Teklatua.getNireTeklatua().irakurriString();
+				ListaJokalariak.getNireListaJokalariak().getZerrenda()[1]=new JokalariArrunta(izena3);
+				partidaJolastu();
+				break;
+			case 3:
 				File txt1= new File ("res/ARAUAK.txt");
 				irakurri(txt1);
 				System.out.println("Sakatu enter menura itzultzeko");
 				Teklatua.getNireTeklatua().irakurriEnter();
-				partidaHasieratu();
-				}
-			
-			else
-				throw new HasieranAukeraOkerraSalbuespena();
-			
-		}catch(HasieranAukeraOkerraSalbuespena e){
-			e.inprimatuMezua();
-			partidaHasieratu();
-		}
+				break;
+			case 4:
+				System.exit(0);
+				break;
+			}
+		}while(true);
 	}
 	public void partidaJolastu(){
 		clear();
-		System.out.println("Sartu zure izena");
-		String izena=Teklatua.getNireTeklatua().irakurriString();
-		ListaJokalariak.getNireListaJokalariak().getZerrenda()[0]=new JokalariArrunta(izena);
-		ListaJokalariak.getNireListaJokalariak().getZerrenda()[1]=new JokalariCPU();
 		this.getZerrenda()[0].puntuakErreseteatu();
 		this.getZerrenda()[1].puntuakErreseteatu();
 		while(!bukaeraKonprobatu()){
@@ -128,7 +137,7 @@ public class ListaJokalariak {
 	}
 	public boolean rondarenBukaeraKonprobatu() {
 		boolean b=false;
-		if(this.getZerrenda()[0].getEskukoKartak().getKartaKop()==0 && this.getZerrenda()[1].getEskukoKartak().getKartaKop()==0 && Baraja.getNireBaraja().getBaraja().getKartaKop()==0) {
+		if(this.getZerrenda()[0].getEskukoKartak().getKartaKop()==0 || this.getZerrenda()[1].getEskukoKartak().getKartaKop()==0 && Baraja.getNireBaraja().getBaraja().getKartaKop()==0) {
 			b=true;
 		}
 		return b;

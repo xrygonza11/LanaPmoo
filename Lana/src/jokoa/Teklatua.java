@@ -66,4 +66,25 @@ public class Teklatua {
 		System.out.println("Sakatu enter jarraitzeko");
 		this.sc.nextLine();
 	}
+	public int irakurriAukera(int pNondik, int pNora) {
+		boolean denaOndo=false;
+		int emaitza=(pNondik-1);
+		do {
+			String str=sc.nextLine();
+			try {
+				emaitza=Integer.parseInt(str);
+				if(emaitza<pNondik||emaitza>pNora) {
+					throw new HasieranAukeraOkerraSalbuespena();
+				}
+				denaOndo=true;
+			}
+			catch(NumberFormatException e) {
+				System.out.println("Sarrera zenbaki bat izan behar da");
+			}
+			catch(HasieranAukeraOkerraSalbuespena e) {
+				e.inprimatuMezua();
+			}
+		}while(!denaOndo);
+		return emaitza;
+	}
 }

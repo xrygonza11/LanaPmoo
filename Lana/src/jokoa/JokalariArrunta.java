@@ -52,6 +52,7 @@ public class JokalariArrunta extends Jokalaria{
 		jokaldiPuntuak=jokaldiPuntuak+k.getZenb();
 		aukeratuMahaikoKartak();
 		this.getEskukoKartak().kenduKarta(aukera-1);
+		getLortutakoKartak().gehituKarta(k);
 		this.saiakerakBerrabiarazi();
 		}
 		else {
@@ -113,19 +114,21 @@ public class JokalariArrunta extends Jokalaria{
 			System.out.println("Jokaldiak ez du balio");
 			this.saiakerak--;
 			int i=0;
-			for(i=1;i<this.getJokaldikoKartak().getKartaKop();i++) {//this.getJokaldikoKartak().getKartaKop()>0){
+			while(this.getJokaldikoKartak().getKartaKop()>0) {//this.getJokaldikoKartak().getKartaKop()>0){
 				//int i=this.getJokaldikoKartak().getKartaKop();
-				k2=this.getJokaldikoKartak().getKarta(i-1);
+				k2=this.getJokaldikoKartak().getKarta(0);
 				MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().gehituKarta(k2);
+				this.getJokaldikoKartak().kenduKarta(0);
 			}
-			this.getJokaldikoKartak().erreseteatu();
+			//this.getJokaldikoKartak().erreseteatu();
 			this.jokaldiaEgin();
 		}else {
 			//int i=0;
-			for(int i=1;i<this.getJokaldikoKartak().getKartaKop();i++) {//(this.getJokaldikoKartak().getKartaKop()>0){
+			while(getJokaldikoKartak().getKartaKop()>0) {//(this.getJokaldikoKartak().getKartaKop()>0){
 				//int i=this.getJokaldikoKartak().getKartaKop();
-				k2=this.getJokaldikoKartak().getKarta(i-1);
+				k2=this.getJokaldikoKartak().getKarta(0);
 				this.getLortutakoKartak().gehituKarta(k2);
+				getJokaldikoKartak().kenduKarta(0);
 			}
 			this.getJokaldikoKartak().erreseteatu();
 		}
@@ -166,6 +169,7 @@ public class JokalariArrunta extends Jokalaria{
 				}
 		MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().gehituKarta(k);
 		this.getEskukoKartak().kenduKarta(aukera-1);
+		this.saiakerakBerrabiarazi();
 	}
 	}
 

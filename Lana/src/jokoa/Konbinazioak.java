@@ -52,13 +52,15 @@ public class Konbinazioak{
 
 			if (sum == K)  { 
 				local.gehituKarta(karta);
+				local.imprimatuKartak();
 				konbiKartak.gehituLista(local);
 				aurkitua=true;
 				local.erreseteatu();
+				sum=0;
 				//hacer que local sea el array del jokaldi
 				//aurkitua true
 				//ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak().imprimatuKartak();
-				return; 
+				//return; 
 			}
 
 			// For all other combinations 
@@ -76,22 +78,28 @@ public class Konbinazioak{
 				local.gehituKarta(A.getKarta(i)); 
 
 				// Recursive call 
-				if(!aurkitua)
+				//if(!aurkitua)
 				konbinazioakEgin(i + 1, sum + A.getKarta(i).getZenb(), K, local, A, matrize,karta); 
 
-				// Remove element from the combination 
-				//local.kenduKarta(local.getKartaKop()-1); 
+				// Remove element from the combination
+				if(local.getKartaKop()!=0) {
+				local.kenduKarta(local.getKartaKop()-1); 
+				}
 			} 
 		}
 		private void konbinazioOnenaAukeratu() {
+			konbiKartak.imprimatuMatrizea();
 			konbiKartak.puntuazioakEman();
 			ListaKartak l=konbiKartak.getLista(konbiKartak.puntuazioAltuenaAukeratu());
+			l.imprimatuKartak();
 			Iterator<Karta> itr=l.getIteradorea();
 			Karta k=null;
 			while(itr.hasNext()) {
 				k=itr.next();
+				k.imprimatuKarta();
 				ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getLortutakoKartak().gehituKarta(k);
 				ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getJokaldikoKartak().gehituKarta(k);
+				ListaJokalariak.getNireListaJokalariak().getZerrenda()[1].getJokaldikoKartak().imprimatuKartak();
 			}
 			
 		}

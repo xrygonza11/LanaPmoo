@@ -44,6 +44,7 @@ public class JokalariCPU extends Jokalaria {
 	}
 	private Karta baloreGutxiengoKarta(){
 		int i=0;
+		int aux=0;
 		Karta k=null;
 		Karta kt=this.getEskukoKartak().getKarta(i);
 		String ktp=kt.getPalo();
@@ -57,21 +58,25 @@ public class JokalariCPU extends Jokalaria {
 					if(p!="Urrea"){
 						if(ktz>z){
 							kt=k;
+							aux=i;
 						}
 					}
 					else 
 						if(ktp=="Urrea"){
 							if(ktz>z){
 								kt=k;
+								aux=i;
 							}
 						}
 						else if(ktz>z){
 							kt=k;
+							aux=i;
 						}
 				}			
 			}
 			i++;
 		}
+		this.getEskukoKartak().kenduKarta(aux);
 		return kt;
 	}
 }
