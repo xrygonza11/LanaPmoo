@@ -15,7 +15,7 @@ public class Konbinazioak{
 			}
 			return nireKonbinazioak;
 		}
-		public Konbinazioak() {
+		private Konbinazioak() {
 			konbiKartak=new Matrizea();
 		}
 

@@ -66,6 +66,7 @@ public class ListaJokalariak {
 				partidaJolastu();
 				break;
 			case 3:
+				clear();
 				File txt1= new File ("res/ARAUAK.txt");
 				irakurri(txt1);
 				System.out.println("Sakatu enter menura itzultzeko");

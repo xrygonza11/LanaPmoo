@@ -74,8 +74,8 @@ public class konbinazioakTest {
 
 	@Test
 	public void testKonbinazioOnena() {
+		//konsolaren bitartez ikusiko dira konbinazio guztiak
 		lj.getZerrenda()[1].getKonbinazioak().konbinazioOnena();
-		System.out.println(lj.getZerrenda()[1].getLortutakoKartak());
 	}
 
 }

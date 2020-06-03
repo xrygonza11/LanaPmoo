@@ -1,4 +1,18 @@
--->ESKOBA JOKOA ETA HAREN ARAUAK<--
+                                                                
+                                                                
+                                                     .          
+                                                   .'|          
+          .-,.--.                                .'  |          
+    __    |  .-. |    __                   __   <    |          
+ .:--.'.  | |  | | .:--.'.     _    _   .:--.'.  |   | ____     
+/ |   \ | | |  | |/ |   \ |   | '  / | / |   \ | |   | \ .'     
+`" __ | | | |  '- `" __ | |  .' | .' | `" __ | | |   |/  .      
+ .'.''| | | |      .'.''| |  /  | /  |  .'.''| | |    /\  \     
+/ /   | |_| |     / /   | |_|   `'.  | / /   | |_|   |  \  \    
+\ \._,\ '/|_|     \ \._,\ '/'   .'|  '/\ \._,\ '/'    \  \  \   
+ `--'  `"          `--'  `"  `-'  `--'  `--'  `"'------'  '---' 
+ 
+ 
 
 
 Jokoaren helburua ahal diren baza gehien lortzea da, eskuan izandako karta bat mahaian dauden karta batekin edo batzuekin batzean 15era heltzean lortzen direnak. Partidak 21 puntura jokatzen dira eta joko batean edo gehiagotan lor daitezke. Karten balioak kartetan agertzen dena da txanka, zaldi eta erregeena izan ezik; hauen balioa 8, 9 eta 10 da, hurrenez hurren.
@@ -16,5 +30,5 @@ Jokoa bukatzean kontaketa egiten da:
 ·         Zazpi gehienak izateagatik 	                               		Puntu 1
 ·         Zazpi guztiak izateagatik   	                               		Puntu 3
 ·         Karten gehiengoa izateagatik                                		Puntu 1
-·         Kontrakoak 10 karta baino gutxiago izateagatik   			Puntu 1
-·         Kontrakoak kartarik ez badu                                           Partida galdu
+·         Kontrakoak 10 karta baino gutxiago izateagatik   					Puntu 1
+·         Kontrakoak kartarik ez badu                                       Partida galdu
