@@ -129,7 +129,13 @@ public class ListaJokalariak {
 			while(!banaketaBeharrezkoaDa()) {
 				clear();
 				this.getZerrenda()[0].jokaldiaEgin();
+				if(eskobaDa()) {
+					this.getZerrenda()[0].puntuakGehitu(1);
+				}
 				this.getZerrenda()[1].jokaldiaEgin();
+				if(eskobaDa()) {
+					this.getZerrenda()[1].puntuakGehitu(1);
+				}
 			}
 			this.kartakBanatu();
 		}
@@ -169,6 +175,7 @@ public class ListaJokalariak {
 		if(MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().getKartaKop()==0) {
 			eskoba=true;
 		}
+		System.out.println("Eskoba egon da!");
 		return eskoba;
 	}
 	public void jokoaBerrabiarazi() {
