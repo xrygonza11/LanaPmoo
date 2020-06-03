@@ -53,7 +53,7 @@ public class Konbinazioak{
 			if (sum == K)  { 
 				local.gehituKarta(karta);
 				local.imprimatuKartak();
-				konbiKartak.gehituLista(local);
+				matrize.gehituLista(local);
 				aurkitua=true;
 				local.erreseteatu();
 				sum=0;

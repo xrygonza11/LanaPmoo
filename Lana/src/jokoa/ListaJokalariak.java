@@ -175,7 +175,7 @@ public class ListaJokalariak {
 		if(MahaikoKartak.getNireMahaikoKartak().getMahaikoKartak().getKartaKop()==0) {
 			eskoba=true;
 		}
-		System.out.println("Eskoba egon da!");
+		//System.out.println("Eskoba egon da!");
 		return eskoba;
 	}
 	public void jokoaBerrabiarazi() {
